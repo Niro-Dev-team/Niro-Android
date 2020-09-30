@@ -1,3 +1,0 @@
-include ':libtd'
-include ':app'
-rootProject.name = "Niro App"
