@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "10633069505-ieo0do6vdc1ki39kc2ss8tpfie514phh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.niro.niroapp",
+            "certificate_hash": "4a25eb0eb727070c438198220361687e8bf35aed"
+          }
+        },
+        {
+          "client_id": "10633069505-prtn2amfbbjus2e1nv6um31j60eqbchd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.niro.niroapp",
+            "certificate_hash": "e2e7460184b837354e3382c18b329d17b425d3a9"
+          }
+        },
+        {
           "client_id": "10633069505-j9v5sllsl1jefi4q7lltjb89o8mihl17.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
