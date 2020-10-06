@@ -44,7 +44,7 @@
     <string name="signing_up">Signing Up...</string>
     <string name="title_home">Home</string>
     <string name="title_orders">Orders</string>
-    <string name="title_payments">Payments</string>
+    <string name="title_chats">Chats</string>
     <string name="title_users">Loaders</string>
     <string name="title_loans">Loans</string>
     <string name="title_profile">Profile</string>
@@ -214,7 +214,7 @@
     <string name="sell_order_created">Sell Order is Created</string>
     <string name="facebook_app_id">362252558274124</string>
     <string name="fb_login_protocol_scheme">fb362252558274124</string>
-
+    <string name="title_discover">Discover</string>
 
 
 </resources>

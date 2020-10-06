@@ -96,8 +96,6 @@ class MainActivity : AppCompatActivity() {
 
         checkForAppUpdates()
         initializeUserProfile()
-
-
     }
 
     private fun launchSelectedNavigationDrawerFragment(item: MenuItem): Boolean {
@@ -198,7 +196,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.navigation_payments -> {
-                setToolbarTitleAndImage(getString(R.string.title_payments), R.drawable.ic_payments)
+                setToolbarTitleAndImage(getString(R.string.title_chats), R.drawable.ic_payments)
                 mNavController.navigate(
                     R.id.navigation_payments,
                     bundleOf(NiroAppConstants.ARG_CURRENT_USER to mCurrentUser)

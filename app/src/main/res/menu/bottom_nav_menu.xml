@@ -18,7 +18,7 @@
         android:id="@+id/navigation_payments"
         android:icon="@drawable/ic_payments"
         app:showAsAction="ifRoom"
-        android:title="@string/title_payments" />
+        android:title="@string/title_chats" />
     <item
         android:id="@+id/navigation_loaders"
         android:icon="@drawable/ic_user_type"
@@ -28,7 +28,7 @@
         android:id="@+id/navigation_loans"
         android:icon="@drawable/ic_loans_24"
         app:showAsAction="ifRoom"
-        android:title="@string/title_loans" />
+        android:title="@string/title_discover" />
 
 
 </menu>
