@@ -13,8 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.niro.niroapp.R;
+import com.niro.niroapp.pubnub_chat.Login;
 import com.niro.niroapp.pubnub_chat.groupchat.GroupChatActivity;
 import com.niro.niroapp.pubnub_chat.groupchatAdaapters.ChatAppMsgDTO;
 import com.niro.niroapp.pubnub_chat.groupchatAdaapters.FullScreenImage;
@@ -58,6 +60,7 @@ public class SentMessageViewHolder extends RecyclerView.ViewHolder {
             final String url =msgDto.getUrl();
             RequestOptions options = new RequestOptions()
                     .centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .placeholder(R.mipmap.ic_launcher_round)
                     .error(R.mipmap.ic_launcher_round);
             Glide.with(GroupChatActivity.context)
@@ -68,11 +71,12 @@ public class SentMessageViewHolder extends RecyclerView.ViewHolder {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent = new Intent(GroupChatActivity.context, FullScreenImage.class);
+
+                    Intent intent = new Intent(view.getContext(), FullScreenImage.class);
 
                     intent.putExtra("url", msgDto.getUrl());
+                    view.getContext().startActivity(intent);
 
-                    context.startActivity(intent);
                 }
             });
 

@@ -30,7 +30,7 @@
                 android:lineSpacingExtra="2dp"
 
                 android:textColor="#ffffff"
-                android:textSize="@dimen/_14sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

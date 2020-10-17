@@ -217,6 +217,7 @@
     <string name="facebook_app_id">362252558274124</string>
     <string name="fb_login_protocol_scheme">fb362252558274124</string>
     <string name="title_discover">Discover</string>
+    <string name="title_groupchat">Group Chat</string>
 
 
 </resources>

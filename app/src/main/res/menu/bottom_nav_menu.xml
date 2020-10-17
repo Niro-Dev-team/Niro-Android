@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_24"
+        android:id="@+id/action_chat"
+        android:icon="@drawable/ic_chat"
         app:showAsAction="ifRoom"
-        android:title="@string/title_home" />
+        android:title="@string/title_chats" />
+
 
     <item
         android:id="@+id/navigation_orders"
@@ -14,11 +14,7 @@
         app:showAsAction="ifRoom"
         android:title="@string/title_orders" />
 
-    <item
-        android:id="@+id/action_chat"
-        android:icon="@drawable/ic_chat"
-        app:showAsAction="ifRoom"
-        android:title="@string/title_chats" />
+
     <item
         android:id="@+id/navigation_loaders"
         android:icon="@drawable/ic_payments"

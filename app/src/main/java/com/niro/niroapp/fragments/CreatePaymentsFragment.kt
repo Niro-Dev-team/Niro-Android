@@ -28,7 +28,7 @@ import com.niro.niroapp.viewmodels.CreatePaymentsViewModel
 import com.niro.niroapp.viewmodels.PaymentMode
 import com.niro.niroapp.viewmodels.factories.CreatePaymentsViewModelFactory
 
-class CreatePaymentsFragment : Fragment(),DateChangeListener,OnBackPressedListener {
+class  CreatePaymentsFragment : Fragment(),DateChangeListener,OnBackPressedListener {
 
     private var viewModel: CreatePaymentsViewModel? = null
     private var mSelectedUserContactId: String? = null

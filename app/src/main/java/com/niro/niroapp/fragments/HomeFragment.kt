@@ -44,7 +44,7 @@ class HomeFragment : Fragment(), OnBackPressedListener {
     companion object {
         fun newInstance(user: User): HomeFragment {
             return HomeFragment().apply {
-                arguments = bundleOf(ARG_USER to user)
+                arguments = bundleOf(ARG_USER to  user)
             }
         }
     }

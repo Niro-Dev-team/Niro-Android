@@ -61,14 +61,14 @@ public class ReceivedMessageHolder extends RecyclerView.ViewHolder {
 
             Glide.with(GroupChatActivity.context)
                     .load(url)
-
                     .apply(options).into(receive);
             receive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, FullScreenImage.class);
+                    Intent intent = new Intent(view.getContext(), FullScreenImage.class);
+
                     intent.putExtra("url", msgDto.getUrl());
-                    context.startActivity(intent);
+                    view.getContext().startActivity(intent);
                 }
             });
         } else {

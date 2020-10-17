@@ -23,7 +23,11 @@
         android:name="com.niro.niroapp.fragments.BuyCommoditiesFragment"
         android:label="@string/title_buy_commodities"
         tools:layout="@layout/buyers_list_fragment" />
-
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.niro.niroapp.pubnub_chat.chatNav.GroupChatFragment"
+        android:label="@string/title_groupchat"
+        tools:layout="@layout/chat_fragment" />
     <fragment
         android:id="@+id/navigation_orders"
         android:name="com.niro.niroapp.fragments.OrdersFragment"
@@ -73,9 +77,9 @@
 
     <fragment
         android:id="@+id/action_chat"
-        android:name="com.niro.niroapp.fragments.PaymentsFragment"
-        android:label="@string/title_payments"
-        tools:layout="@layout/payments_fragment" >
+        android:name="com.niro.niroapp.pubnub_chat.chatNav.GroupChatFragment"
+        android:label="@string/title_chats"
+        tools:layout="@layout/activity_chat" >
         <action
             android:id="@+id/action_navigation_payments_to_navigation_contacts_list"
             app:destination="@id/navigation_contacts_list" />

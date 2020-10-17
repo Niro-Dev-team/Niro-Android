@@ -6,6 +6,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
@@ -130,8 +131,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun launchHomeFragment(user: User) {
-        setToolbarTitleAndImage(getString(R.string.title_home), R.drawable.ic_home_24)
-        mNavController.navigate(R.id.navigation_home)
+        setToolbarTitleAndImage(getString(R.string.title_chats), R.drawable.ic_chat)
+        mNavController.navigate(R.id.action_chat)
     }
 
 
@@ -183,9 +184,9 @@ class MainActivity : AppCompatActivity() {
 
         initializeCurrentUser()
         when (item.itemId) {
-            R.id.navigation_home -> {
-                launchHomeFragment(mCurrentUser)
-            }
+//            R.id.navigation_home -> {
+//                launchHomeFragment(mCurrentUser)
+//            }
 
             R.id.navigation_orders -> {
                 setToolbarTitleAndImage(getString(R.string.title_orders), R.drawable.ic_orders)
