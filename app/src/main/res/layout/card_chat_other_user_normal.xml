@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/incoming_bubble_chat"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_chat_parent"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/senderName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="2dp"
+
+                android:textColor="#ffffff"
+                android:textSize="@dimen/_14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="SenderName" />
+
+            <TextView
+                android:id="@+id/senderAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+
+                android:fontFamily="@font/roboto"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#ffffff"
+                android:textSize="10sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@+id/senderName"
+                app:layout_constraintTop_toBottomOf="@+id/senderName"
+                tools:text="SenderAddress" />
+
+            <ImageView
+                android:id="@+id/receiveImage"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_emojis"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/senderAddress" />
+
+            <TextView
+                android:id="@+id/chat_left_msg_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+
+                android:fontFamily="@font/roboto"
+                android:lineSpacingExtra="2dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/receiveImage"
+                tools:text=" dfjdsfkjdsfjks dsfkjdsfkjdsfkjsdfkj fkfkf eiiiddi" />
+
+            <TextView
+                android:id="@+id/reciveTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+
+                android:layout_marginBottom="4dp"
+                android:textColor="#fff"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chat_left_msg_text_view"
+                tools:text="17/04 08:30PM" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

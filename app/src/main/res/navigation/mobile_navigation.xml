@@ -72,7 +72,7 @@
 
 
     <fragment
-        android:id="@+id/navigation_payments"
+        android:id="@+id/action_chat"
         android:name="com.niro.niroapp.fragments.PaymentsFragment"
         android:label="@string/title_payments"
         tools:layout="@layout/payments_fragment" >
@@ -167,7 +167,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_loans"
+        android:id="@+id/action_other"
         android:name="com.niro.niroapp.loans.fragments.LoanRequirementFragment"
         android:label="@string/title_loans"
         tools:layout="@layout/loan_requirement_fragment" />

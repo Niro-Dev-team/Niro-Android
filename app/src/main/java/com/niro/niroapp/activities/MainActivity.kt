@@ -72,9 +72,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_logout,
                 R.id.navigation_home,
                 R.id.navigation_orders,
-                R.id.navigation_payments,
+                R.id.action_chat,
                 R.id.navigation_loaders,
-                R.id.navigation_loans
+                R.id.action_other
             ), drawerLayout
         )
         setupActionBarWithNavController(mNavController, appBarConfiguration)
@@ -195,10 +195,10 @@ class MainActivity : AppCompatActivity() {
                 )
             }
 
-            R.id.navigation_payments -> {
+            R.id.action_chat -> {
                 setToolbarTitleAndImage(getString(R.string.title_chats), R.drawable.ic_payments)
                 mNavController.navigate(
-                    R.id.navigation_payments,
+                    R.id.action_chat,
                     bundleOf(NiroAppConstants.ARG_CURRENT_USER to mCurrentUser)
                 )
             }
@@ -217,10 +217,10 @@ class MainActivity : AppCompatActivity() {
                 )
             }
 
-            R.id.navigation_loans -> {
+            R.id.action_other -> {
                 setToolbarTitleAndImage(getString(R.string.title_loans), R.drawable.ic_loans_24)
                 mNavController.navigate(
-                    R.id.navigation_loans,
+                    R.id.action_other,
                     bundleOf(NiroAppConstants.ARG_CURRENT_USER to mCurrentUser)
                 )
             }

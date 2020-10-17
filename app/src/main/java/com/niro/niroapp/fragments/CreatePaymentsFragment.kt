@@ -174,7 +174,7 @@ class CreatePaymentsFragment : Fragment(),DateChangeListener,OnBackPressedListen
     }
 
     private fun goBackToPaymentsScreen() {
-        findNavController().popBackStack(R.id.navigation_payments, false)
+        findNavController().popBackStack(R.id.action_chat, false)
     }
 
     override fun onBackPressed() {

@@ -11,7 +11,7 @@ android {
             storePassword '@Admin123$'
             keyAlias 'keyNiro'
             keyPassword '@Admin123$'
-            storeFile file('/Volumes/STRONTIUM/niro_agro/keystore/release/releasekey')
+            storeFile file('C:\\Users\\VAMSHI DUDDU\\Desktop\\Niro\\MyBranch\\Niro-Android\\keystore\\release\\releasekey')
         }
         prodRelease {
             storeFile file('/Volumes/STRONTIUM/niro_agro/keystore/prodrelease/prodkey')
@@ -25,7 +25,7 @@ android {
 
     defaultConfig {
         applicationId "com.niro.niroapp"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 4
         versionName "1.1.2.Internal"
@@ -46,7 +46,7 @@ android {
             versionCode 4
             versionName '1.1.2.Internal'
             targetSdkVersion 29
-            minSdkVersion 19
+            minSdkVersion 21
             signingConfig signingConfigs.release
         }
 
@@ -58,7 +58,7 @@ android {
             versionCode 4
             versionName '1.1.2'
             targetSdkVersion 29
-            minSdkVersion 19
+            minSdkVersion 21
             signingConfig signingConfigs.prodRelease
         }
     }
@@ -66,7 +66,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            debuggable false
+            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
@@ -142,7 +142,29 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //chat
+
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    //notification Badge
+    implementation 'com.github.nikartm:image-support:1.0.5'
+
+    // add PubNub Android-Java SDK here at the bottom
+    implementation group: 'com.pubnub', name: 'pubnub-gson', version: '4.+'\
+
+    implementation 'com.google.android.material:material:1.1.0-alpha08'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0-beta02'
+
+    implementation 'pub.devrel:easypermissions:3.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //implementation 'com.github.pgmacdesign:silicompressor:3.0.6'
+    implementation 'com.zolad:videoslimmer:1.0.0'
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 }
 

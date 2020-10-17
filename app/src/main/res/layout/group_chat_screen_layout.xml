@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FAFBFB"
+    android:orientation="vertical"
+    tools:context=".groupchat.GroupChatActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1C8B0D"
+        app:titleTextColor="#fff"
+        app:subtitleTextColor="#fff"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="0dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:paddingStart="0dp"
+            android:id="@+id/groupDp"
+            android:src="@drawable/ic_dp"
+
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            >
+        <TextView
+            android:id="@+id/channelName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:textColor="#fff"
+
+            android:layout_marginTop="5dp"
+            android:text="ChannelName"
+            android:layout_weight="1"
+            android:textSize="18sp"
+             />
+        <TextView
+            android:id="@+id/channelsub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="subtitle"
+            android:layout_marginBottom="5dp"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
+            android:textColor="#fff"
+            android:textSize="15sp"
+         />
+        </LinearLayout>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scr"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/toolbar"
+        android:layout_gravity="center"
+        android:descendantFocusability="blocksDescendants"
+        >
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/chat_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:layout_marginTop="5dp"
+            android:descendantFocusability="beforeDescendants"/>
+
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+
+        >
+
+        <EditText
+            android:id="@+id/chat_input_msg"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_toStartOf="@+id/chat_send_msg"
+            android:background="@drawable/messageinputbackground"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:drawablePadding="10dp"
+            android:drawableEnd="@drawable/ic_attachments"
+            android:hint="Type a message."
+            android:textSize="15sp"
+            android:lines="5"
+            android:maxLines="5"
+            android:textAlignment="gravity"/>
+
+        <Button
+            android:id="@+id/chat_send_msg"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_send"
+            />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
