@@ -11,10 +11,10 @@ android {
             storePassword '@Admin123$'
             keyAlias 'keyNiro'
             keyPassword '@Admin123$'
-            storeFile file('C:\\Users\\VAMSHI DUDDU\\Desktop\\Niro\\MyBranch\\Niro-Android\\keystore\\release\\releasekey')
+            storeFile file('/keystore/release/releasekey')
         }
         prodRelease {
-            storeFile file('/Volumes/STRONTIUM/niro_agro/keystore/prodrelease/prodkey')
+            storeFile file('/keystore/prodrelease/prodkey')
             storePassword '@Niro_admin#123$'
             keyAlias 'niroProd'
             keyPassword '@Niro_admin#123$'
