@@ -16,7 +16,9 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#4D3952"/>
+            android:background="@color/colorPrimary"
+            app:tabIndicatorColor="@color/colorWhite"
+            app:tabTextColor="@color/colorWhite"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager2.widget.ViewPager2
@@ -26,7 +28,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
-
-
 
 </LinearLayout>

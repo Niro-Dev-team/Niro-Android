@@ -530,8 +530,9 @@ public class GroupChatActivity extends AppCompatActivity
     }
     public void onResume() {
         super.onResume();
-        msgRecyclerView.setAdapter(chatAppMsgAdapter);
-        chatAppMsgAdapter.notifyDataSetChanged();
+
+        msgRecyclerView.smoothScrollToPosition(chatAppMsgAdapter.getItemCount());
+
 
     }
     @Override
@@ -868,7 +869,7 @@ protected String GetFileUrl(String channel, String fileName, String fileID)
     private void CheckPermissions() {
         String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
         if (EasyPermissions.hasPermissions(this, perms)) {
-            Toast.makeText(this, "Opening Gallery", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Opening Gallery", Toast.LENGTH_SHORT).show();
         } else {
             EasyPermissions.requestPermissions(this, "We need permissions because this and that",
                     123, perms);
@@ -919,9 +920,11 @@ protected String GetFileUrl(String channel, String fileName, String fileID)
         scrollview.post(new Runnable() {
             @Override
             public void run() {
+
+
                 scrollview.fullScroll(ScrollView.FOCUS_DOWN);
                 linearLayoutManager.smoothScrollToPosition(msgRecyclerView, null, msgDtoList.size() - 1);
-
+                msgRecyclerView.smoothScrollToPosition(chatAppMsgAdapter.getItemCount());
             }
         });
     }

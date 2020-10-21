@@ -29,15 +29,13 @@
 
             <ImageView
                 android:id="@+id/sentImage"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="24dp"
                 android:src="@drawable/ic_emojis"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="@+id/sentTime"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
