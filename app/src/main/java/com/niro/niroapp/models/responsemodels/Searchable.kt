@@ -66,8 +66,8 @@ data class MandiLocation(
     override fun describeContents() = 0
 
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
-       // writeString(district)
-        //writeString(market)
+        writeString(district)
+        writeString(market)
         writeString(state)
         writeInt((if (isSelected) 1 else 0))
     }
@@ -78,7 +78,7 @@ data class MandiLocation(
             setOf(object : Parcelable.Creator<MandiLocation> {
                 override fun createFromParcel(source: Parcel): MandiLocation = MandiLocation(source)
                 override fun newArray(size: Int): Array<MandiLocation?> = arrayOfNulls(size)
-                //  override fun newSet(size: Int): Set<Int> = setOf(size)
+              //  override fun newSet(size: Int): Set<Int> = setOf(size)
             })
     }
 }

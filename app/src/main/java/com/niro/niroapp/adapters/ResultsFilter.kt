@@ -27,10 +27,10 @@ class ResultsFilter<T : Searchable>(
                                 )
                             ) filteredList.add(item)
                         }
-
+//                        (item.market ?: "").contains(filterPattern, ignoreCase = true) ||
+//                                (item.district ?: "").contains(filterPattern, true) ||
                         is MandiLocation -> {
-                            if ((item.market ?: "").contains(filterPattern, ignoreCase = true) ||
-                                (item.district ?: "").contains(filterPattern, true) ||
+                            if (
                                 (item.state ?: "").contains(filterPattern, true)
                             ) filteredList.add(item)
                         }

@@ -218,6 +218,10 @@
     <string name="fb_login_protocol_scheme">fb362252558274124</string>
     <string name="title_discover">Discover</string>
     <string name="title_groupchat">Group Chat</string>
+    <string name="edit_language">Edit Language</string>
+    <string name="english">English</string>
+    <string name="english">English</string>
+    <string name="hindi">Hindi</string>
 
 
 </resources>

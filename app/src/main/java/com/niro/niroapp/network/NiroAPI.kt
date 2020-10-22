@@ -9,7 +9,6 @@ object NiroAPI {
     const val SIGN_UP = "/api/user/signup"
     const val CATEGORIES = "/api/data/commodity"
     const val MANDI_LOCATIONS = "/api/data/mandiLocation"
-
     const val CREATE_CONTACT = "/api/contacts/create"
     const val GET_CONTACTS = "/api/contacts/getContacts/{userId}"
     const val GET_ALL_CONTACTS = "/api/contacts/getAllContacts"
