@@ -162,7 +162,7 @@
     <string name="text_source_location">Source: \n%s</string>
     <string name="text_destination">"Destination: \n%s"</string>
     <string name="fetching_orders">Fetching your Orders</string>
-    <string name="text_total_amount">Total Amount:</string>
+    <string name="text_total_amount">Total </string>
     <string name="text_amount_paid">Amount Paid</string>
     <string name="text_image">Image</string>
     <string name="text_amount_pending">Amount Pending</string>
@@ -220,7 +220,7 @@
     <string name="title_groupchat">Group Chat</string>
     <string name="edit_language">Edit Language</string>
     <string name="english">English</string>
-    <string name="english">English</string>
+
     <string name="hindi">Hindi</string>
 
 
