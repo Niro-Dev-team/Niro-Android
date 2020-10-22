@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.CommoditiesFragment">
+
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_14sp"
+            android:text="@string/edit_language"
+            android:textColor="@color/pure_black"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/dp_44"
+            android:layout_marginTop="112dp"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="@dimen/_25sdp"
+                android:textAlignment="center"
+                android:button="@drawable/background_tab_item_selected"
+                android:background="#E9E9E9"
+                android:fontFamily="@font/roboto"
+                android:text="@string/hindi"
+                android:textStyle="bold"
+                android:checked="true"
+                android:textSize="@dimen/_20sdp" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="match_parent"
+                android:background="#E9E9E9"
+                android:textAlignment="center"
+                android:button="@drawable/background_tab_item_selected"
+                android:layout_gravity="center_horizontal"
+                android:checked="false"
+                android:textStyle="bold"
+                android:text="@string/english"
+                android:fontFamily="@font/roboto"
+
+                android:textSize="@dimen/_20sdp"  />
+        </RadioGroup>
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_53sdp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <carbon.widget.Button
+                style="@style/loginButton"
+                android:id="@+id/btnNext"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_31sdp"
+                android:layout_marginEnd="@dimen/_31sdp"
+                android:text="@string/text_save"
+                app:carbon_elevation="0dp" />
+        </FrameLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
