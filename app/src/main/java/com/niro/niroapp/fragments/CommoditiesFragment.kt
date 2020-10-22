@@ -139,7 +139,7 @@ class CommoditiesFragment : AbstractBaseFragment(), CheckChangeListener,ItemClic
 
     private fun initializeListeners() {
 
-        super.registerBackPressedCallback(if(previousFragmentId == -1) R.id.enterBusinessFragment else previousFragmentId)
+        super.registerBackPressedCallback(if(previousFragmentId == -1) R.id.enterNameFragment else previousFragmentId)
 
         bindingCommoditiesFragment.btnNext.setOnClickListener {
             if (commoditiesViewModel?.getSelectedCommoditiesList()?.value.isNullOrEmpty()) {

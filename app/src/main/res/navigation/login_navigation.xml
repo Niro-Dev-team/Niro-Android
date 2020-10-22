@@ -30,18 +30,10 @@
         android:label="EnterNameFragment"
         tools:layout="@layout/layout_enter_name">
         <action
-            android:id="@+id/action_enterNameFragment_to_enterBusinessFragment"
-            app:destination="@id/enterBusinessFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/enterBusinessFragment"
-        android:name="com.niro.niroapp.fragments.EnterBusinessFragment"
-        android:label="EnterBusinessFragment"
-        tools:layout="@layout/layout_enter_business">
-        <action
             android:id="@+id/action_enterBusinessFragment_to_commoditiesFragment"
             app:destination="@id/commoditiesFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/commoditiesFragment"
         android:name="com.niro.niroapp.fragments.CommoditiesFragment"
@@ -56,9 +48,7 @@
         android:name="com.niro.niroapp.fragments.MandiListFragment"
         android:label="MandiListFragment"
         tools:layout="@layout/mandi_list_fragment">
-        <action
-            android:id="@+id/action_mandiListFragment_to_userTypeFragment"
-            app:destination="@id/userTypeFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/userTypeFragment"

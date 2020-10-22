@@ -1,6 +1,8 @@
 package com.niro.niroapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,20 +14,31 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import carbon.dialog.ProgressDialog
+import com.facebook.appevents.AppEventsLogger
+import com.google.firebase.auth.FirebaseAuth
 import com.niro.niroapp.R
 import com.niro.niroapp.activities.LoginActivity
+import com.niro.niroapp.activities.MainActivity
+import com.niro.niroapp.database.DatabaseKeys
+import com.niro.niroapp.database.SharedPreferenceManager
 import com.niro.niroapp.databinding.MandiListFragmentBinding
+import com.niro.niroapp.firebase.FirebaseTokenGeneratedDelegate
+import com.niro.niroapp.firebase.FirebaseTokenGenerator
 import com.niro.niroapp.models.APIError
 import com.niro.niroapp.models.APILoader
 import com.niro.niroapp.models.Success
+import com.niro.niroapp.models.responsemodels.LoginResponse
 import com.niro.niroapp.models.responsemodels.MandiLocation
+import com.niro.niroapp.models.responsemodels.UserType
 import com.niro.niroapp.utils.*
 import com.niro.niroapp.viewmodels.MandiListViewModel
 import com.niro.niroapp.viewmodels.SignupViewModel
 import com.niro.niroapp.viewmodels.factories.MandiListViewModelFactory
 import com.niro.niroapp.viewmodels.factories.SignUpViewModelFactory
+import android.util.Log.e as logE
 
-class MandiListFragment : AbstractBaseFragment(), CheckChangeListener,ItemClickListener {
+class MandiListFragment : AbstractBaseFragment(), CheckChangeListener,ItemClickListener,
+    FirebaseTokenGeneratedDelegate {
 
 
     private lateinit var bindingMandiListFragment: MandiListFragmentBinding
@@ -33,7 +46,8 @@ class MandiListFragment : AbstractBaseFragment(), CheckChangeListener,ItemClickL
     private var signUpViewModel: SignupViewModel? = null
     private var previousScreenId : Int = -1
     private var mSelectedMandiLocation : MandiLocation? = null
-
+    private var progressDialog : ProgressDialog? = null
+    private lateinit var mAuth : FirebaseAuth
 
     companion object {
         fun newInstance() = MandiListFragment()
@@ -48,14 +62,12 @@ class MandiListFragment : AbstractBaseFragment(), CheckChangeListener,ItemClickL
     }
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
         bindingMandiListFragment =
             DataBindingUtil.inflate(inflater, R.layout.mandi_list_fragment, container, false)
         bindingMandiListFragment.lifecycleOwner = viewLifecycleOwner
-
+        mAuth = FirebaseAuth.getInstance()
         return bindingMandiListFragment.root
     }
 
@@ -121,7 +133,7 @@ class MandiListFragment : AbstractBaseFragment(), CheckChangeListener,ItemClickL
                     root = bindingMandiListFragment.root
                 )
             } else {
-                launchSelectUserTypeFragment()
+                signUp()
             }
         }
 
@@ -135,6 +147,68 @@ class MandiListFragment : AbstractBaseFragment(), CheckChangeListener,ItemClickL
         val searchTerm = bindingMandiListFragment.etSearchMandi.text.toString()
         mandiListViewModel?.getAdapter()?.filter?.filter(searchTerm)
     }
+    private fun signUp() {
+        //signUpViewModel?.getUserType()?.value = UserType.FARMER
+        signUpViewModel?.getSelectedMandiLocation()?.value = mandiListViewModel?.getSelectedMandiLocation()?.value
+        signUpViewModel?.signUpUser(context)?.observe(viewLifecycleOwner, Observer { response ->
+
+            when(response) {
+                is APILoader -> progressDialog = context?.let { NiroAppUtils.showLoaderProgress(getString(R.string.signing_up), it)}
+
+                is APIError -> {
+                    if(progressDialog != null && progressDialog?.isShowing == true) progressDialog?.dismiss()
+                    NiroAppUtils.showSnackbar(response.errorMessage,root = bindingMandiListFragment.root)
+                }
+
+                is Success<*> -> {
+                    if(progressDialog != null && progressDialog?.isShowing == true) signInWithCustomToken(response.data as? LoginResponse)
+                }
+            }
+
+        })
+    }
+
+
+    private fun signInWithCustomToken(loginResponse: LoginResponse?) {
+
+        loginResponse?.token?.let { activity?.let { activity ->
+            mAuth.signInWithCustomToken(it).addOnCompleteListener(
+                activity) { task ->
+                if (task.isSuccessful) {
+                    FirebaseTokenGenerator(this).generateIdToken(activity)
+                    saveUserData(loginResponse)
+                } else {
+
+                    if(progressDialog != null && progressDialog?.isShowing == true) progressDialog?.dismiss()
+                    NiroAppUtils.showSnackbar(getString(R.string.signup_failed),bindingMandiListFragment.root)
+                }
+            }
+
+        } }
+
+    }
+
+
+    fun logSignUpEvent (valToSum : Double) {
+        val appEventsLogger = AppEventsLogger.newLogger(requireContext())
+        appEventsLogger.logEvent("sign_up",valToSum)
+    }
+
+    private fun saveUserData(loginResponse: LoginResponse?) {
+
+        context?.let {
+            logSignUpEvent(1.0)
+            val sharedPreferenceManager = SharedPreferenceManager(it, NiroAppConstants.LOGIN_SP)
+            sharedPreferenceManager.storeComplexObjectPreference(NiroAppConstants.USER_DATA,loginResponse?.data)
+
+        }
+    }
+
+
+    private fun launchMainActivity() {
+        startActivity(Intent(activity, MainActivity::class.java))
+        activity?.finish()
+    }
 
     private fun launchSelectUserTypeFragment() {
 
@@ -145,7 +219,7 @@ class MandiListFragment : AbstractBaseFragment(), CheckChangeListener,ItemClickL
         }
 
         signUpViewModel?.getSelectedMandiLocation()?.value = mandiListViewModel?.getSelectedMandiLocation()?.value
-        findNavController().navigate(R.id.action_mandiListFragment_to_userTypeFragment)
+       // findNavController().navigate(R.id.action_mandiListFragment_to_userTypeFragment)
     }
 
     private fun getVariablesMap(): HashMap<Int, Any?> {
@@ -176,6 +250,18 @@ class MandiListFragment : AbstractBaseFragment(), CheckChangeListener,ItemClickL
         mandiListViewModel?.getUnSelectedLocation()?.value = mandiListViewModel?.getSelectedMandiLocation()?.value
         mandiListViewModel?.getSelectedMandiLocation()?.value = item as? MandiLocation
         mandiListViewModel?.updateSelectedLocation()
+    }
+
+    override fun onTokenGenerated(isSuccess: Boolean) {
+        Log.e("suc", isSuccess.toString())
+        if(progressDialog != null && progressDialog?.isShowing == true) progressDialog?.dismiss()
+        if(isSuccess) {
+            val sharedPreferenceManager = context?.let { SharedPreferenceManager(it,NiroAppConstants.LOGIN_SP) }
+            sharedPreferenceManager?.storeBooleanPreference(DatabaseKeys.KEY_LOGGED_IN,true)
+            launchMainActivity()
+        }
+
+        else NiroAppUtils.showSnackbar(getString(R.string.signup_failed),bindingMandiListFragment.root)
     }
 
 }

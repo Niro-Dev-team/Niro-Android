@@ -79,30 +79,18 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_check_circle_24" />
 
-                <TextView
-                    android:id="@+id/tvMarketName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_14sdp"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:text="@{mandLocation.market}"
-                    style="@style/cardItemText"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvDistrictAndState"
+                    style="@style/cardItemText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_14sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_6sdp"
-                    android:text='@{mandLocation.district + ", " + mandLocation.state }'
-                    style="@style/cardItemText"
-                    android:textSize="@dimen/_9ssp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="24dp"
+                    android:text='@{mandLocation.state }'
+                    android:textSize="@dimen/_18ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvMarketName" />
+                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

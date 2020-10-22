@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
             name="SignUpVM"
             type="com.niro.niroapp.viewmodels.SignupViewModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -69,6 +69,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvEnterNameHeader" />
 
+        <carbon.widget.EditText
+            android:id="@+id/etEnterBusiness"
+            style="@style/signupUserDetails"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:hint="@string/txt_enter_business"
+            android:padding="@dimen/_8sdp"
+            android:text="@={SignUpVM.businessName}"
+            app:layout_constraintBottom_toBottomOf="@id/btnNext"
+            app:layout_constraintTop_toBottomOf="@+id/tvEnterNameHeader" />
+
         <carbon.widget.Button
             android:id="@+id/btnNext"
             style="@style/loginButton"
@@ -80,7 +93,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etEnterName" />
+            app:layout_constraintTop_toBottomOf="@+id/etEnterBusiness" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
