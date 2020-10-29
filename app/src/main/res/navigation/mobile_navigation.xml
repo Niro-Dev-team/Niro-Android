@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_chat">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -199,6 +199,16 @@
         <action
             android:id="@+id/action_navigation_profile_details_to_navigation_commodities_fragment"
             app:destination="@id/navigation_commodities_fragment" />
+        <action
+            android:id="@+id/action_navigation_profile_details_to_navigation_Language_edit"
+            app:destination="@id/navigation_change_language" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_change_language"
+        android:name="com.niro.niroapp.fragments.ChangeLanguage"
+        android:label="@string/menu_my_profile"
+        tools:layout="@layout/layout_select_language" >
+
     </fragment>
 
     <fragment

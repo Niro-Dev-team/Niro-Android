@@ -76,6 +76,11 @@ class ProfileDetailsFragment : AbstractBaseFragment() {
         super.registerBackPressedCallback(previousScreenId = R.id.navigation_home)
         bindingProfileDetails.btnEditCommodities.setOnClickListener { openEditCommoditiesScreen() }
         bindingProfileDetails.btnEditProfile.setOnClickListener { openEditProfileScreen() }
+        bindingProfileDetails.changeLanguage.setOnClickListener { openChangeLanguageScreen() }
+    }
+
+    private fun openChangeLanguageScreen() {
+        findNavController().navigate(R.id.action_navigation_profile_details_to_navigation_Language_edit,bundleOf(NiroAppConstants.ARG_CURRENT_USER to mCurrentUser))
     }
 
     private fun openEditProfileScreen() {

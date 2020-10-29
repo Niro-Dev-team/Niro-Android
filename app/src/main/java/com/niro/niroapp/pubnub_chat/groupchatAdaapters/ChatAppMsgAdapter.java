@@ -37,7 +37,7 @@ public class ChatAppMsgAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         final ChatAppMsgDTO msgDto = msgDtoList.get(position);
         holder.setIsRecyclable(false);
 
-        // If the message is a received message.
+        // If the message is radio_selected received message.
         if (holder instanceof SentMessageViewHolder)
         {
             SentMessageViewHolder sentMessageViewHolder = (SentMessageViewHolder) holder;
