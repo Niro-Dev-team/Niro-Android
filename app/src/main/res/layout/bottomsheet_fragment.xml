@@ -19,7 +19,7 @@
 
         android:orientation="vertical">
     <androidx.constraintlayout.widget.ConstraintLayout
-
+        android:id="@+id/headerLayouts"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_47sdp"
         android:background="@drawable/header_green_background_rounded_corners"
@@ -42,7 +42,7 @@
         android:id="@+id/tvUserName1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_11sdp"
         android:textAppearance="@style/navHeaderText"
         app:layout_constraintStart_toEndOf="@+id/ivProfile"
@@ -53,38 +53,14 @@
             android:id="@+id/tvUserNumber1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_2sdp"
             android:textAppearance="@style/navHeaderText"
             app:layout_constraintStart_toEndOf="@+id/ivProfile"
             app:layout_constraintTop_toBottomOf="@+id/tvUserName1"
             tools:text="TextView" />
 
-        <LinearLayout
-        android:id="@+id/layoutMyProfileBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_11sdp"
-        android:layout_marginEnd="@dimen/_5sdp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tvMyProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_my_profile"
-                android:textAppearance="@style/navHeaderText" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitEnd"
-            app:srcCompat="@drawable/ic_arrow_forward" />
-    </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:layout_width="match_parent"

@@ -2,7 +2,6 @@ package com.niro.niroapp.pubnub_chat;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,7 +43,7 @@ public class ActivityMain extends AppCompatActivity {
                         ft.commit();
 
                         return true;
-                    case R.id.action_other:
+                    case R.id.action_profile:
                         currentFragment = new OthersDummy();
                         ft = getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.content, currentFragment);

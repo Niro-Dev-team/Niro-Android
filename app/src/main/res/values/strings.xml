@@ -225,4 +225,6 @@
     <string name="change_language" >Change Language</string>
     <string name="groups">GROUPS</string>
     <string name="messages">MESSAGES</string>
+    <string name="profile">Settings</string>
+    <string name="title_profile_">Profile</string>
 </resources>

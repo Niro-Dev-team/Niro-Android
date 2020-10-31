@@ -5,19 +5,14 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -26,9 +21,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.navigation.NavigationView
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -37,7 +29,6 @@ import com.google.android.play.core.install.model.UpdateAvailability
 import com.niro.niroapp.R
 import com.niro.niroapp.database.SharedPreferenceManager
 import com.niro.niroapp.databinding.ActivityMainBinding
-import com.niro.niroapp.fragments.BottomSheetFragment
 import com.niro.niroapp.fragments.CreateOrderFragment
 import com.niro.niroapp.fragments.LogoutDialog
 import com.niro.niroapp.models.responsemodels.User
@@ -46,9 +37,7 @@ import com.niro.niroapp.users.fragments.ContactsFragment
 import com.niro.niroapp.utils.NiroAppConstants
 import com.niro.niroapp.utils.NiroAppUtils
 import com.niro.niroapp.viewmodels.LocaleHelper.onAttach
-import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.app_bar_home.view.*
-import kotlinx.android.synthetic.main.bottomsheet_fragment.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -71,10 +60,7 @@ class MainActivity : AppCompatActivity() {
         //val navView: NavigationView = findViewById(R.id.nav_view)
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
 
-        bottomSheet.setOnClickListener {
-            var bottomsheetFragment =BottomSheetFragment();
-            bottomsheetFragment.show(supportFragmentManager,"TAG")
-        }
+
 
         mNavController = findNavController(R.id.nav_host_fragment)
 
@@ -87,7 +73,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_orders,
                 R.id.action_chat,
                 R.id.navigation_loaders,
-                R.id.action_other
+                R.id.action_profile,
+                R.id.profile_settings
+
+
             )
         )
         setupActionBarWithNavController(mNavController, appBarConfiguration)
@@ -233,10 +222,18 @@ class MainActivity : AppCompatActivity() {
                 )
             }
 
-            R.id.action_other -> {
+            R.id.action_profile -> {
                 setToolbarTitleAndImage(getString(R.string.title_loans), R.drawable.ic_loans_24)
                 mNavController.navigate(
-                    R.id.action_other,
+                    R.id.action_profile,
+                    bundleOf(NiroAppConstants.ARG_CURRENT_USER to mCurrentUser)
+                )
+            }
+            R.id.profile_settings -> {
+                setToolbarTitleAndImage(getString(R.string.profile), R.drawable.ic_profile_24)
+
+                mNavController.navigate(
+                    R.id.action_bottomsheet,
                     bundleOf(NiroAppConstants.ARG_CURRENT_USER to mCurrentUser)
                 )
             }
