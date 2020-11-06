@@ -41,6 +41,8 @@ import com.niro.niroapp.models.responsemodels.UserType
 import com.niro.niroapp.users.fragments.ContactsFragment
 import com.niro.niroapp.utils.NiroAppConstants
 import com.niro.niroapp.utils.NiroAppUtils
+import com.pubnub.api.PNConfiguration
+import com.pubnub.api.PubNub
 import kotlinx.android.synthetic.main.app_bar_home.view.*
 
 class MainActivity : AppCompatActivity() {
@@ -51,6 +53,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mCurrentUser: User
     private lateinit var mNavController: NavController
     private var mDialog: Dialog? = null
+
+    private lateinit var mPubnub : PubNub
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,10 +99,25 @@ class MainActivity : AppCompatActivity() {
                 item
             )
         }
-
         checkForAppUpdates()
+
+        initializePubnubChat()
         initializeUserProfile()
     }
+
+    private fun initializePubnubChat()  {
+        val pnConfiguration = PNConfiguration()
+        pnConfiguration.subscribeKey = "SubscribeKey"
+        pnConfiguration.publishKey = "PublishKey"
+        pnConfiguration.isSecure = false
+        pnConfiguration.uuid = NiroAppUtils.getCurrentUserId(this)
+        mPubnub =  PubNub(pnConfiguration)
+    }
+
+
+    fun getPubnub() = mPubnub
+
+
 
     private fun launchSelectedNavigationDrawerFragment(item: MenuItem): Boolean {
 

@@ -2,7 +2,9 @@ package com.niro.niroapp.models.responsemodels
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.niro.niroapp.chats.models.ChatMessage
 import com.niro.niroapp.users.fragments.ContactType
+import java.util.*
 
 sealed class Searchable {}
 
@@ -14,17 +16,20 @@ data class User(
     var selectedCommodities: List<CommodityItem>?,
     val selectedMandi: MandiLocation?,
     val userType: String?,
-    val ratings: Float?
+    val ratings: Float?,
+    val industry: String? = "Agriculture"
 ) : Searchable(), Parcelable {
+
     constructor(source: Parcel) : this(
-        source.readString(),
-        source.readString(),
-        source.readString(),
-        source.readString(),
-        source.createTypedArrayList(CommodityItem.CREATOR),
-        source.readParcelable<MandiLocation>(MandiLocation::class.java.classLoader),
-        source.readString(),
-        source.readValue(Float::class.java.classLoader) as Float?
+    source.readString(),
+    source.readString(),
+    source.readString(),
+    source.readString(),
+    source.createTypedArrayList(CommodityItem.CREATOR),
+    source.readParcelable<MandiLocation>(MandiLocation::class.java.classLoader),
+    source.readString(),
+    source.readValue(Float::class.java.classLoader) as Float?,
+    source.readString()
     )
 
     override fun describeContents() = 0
@@ -38,6 +43,7 @@ data class User(
         writeParcelable(selectedMandi, 0)
         writeString(userType)
         writeValue(ratings)
+        writeString(industry)
     }
 
     companion object {
@@ -418,6 +424,46 @@ data class BuyCommodity(
 
                 override fun newArray(size: Int): Array<BuyCommodity?> = arrayOfNulls(size)
             }
+    }
+}
+
+
+data class UserGroup(
+    val groupId: String? = "",
+    val industry: String? = "",
+    val category: String? = "",
+    val groupName: String? = "",
+    val groupImage: String? = "",
+    val recentMessages: LinkedList<ChatMessage> = LinkedList<ChatMessage>()
+
+) : Searchable(), Parcelable{
+    constructor(source: Parcel) : this(
+    source.readString(),
+    source.readString(),
+    source.readString(),
+    source.readString(),
+    source.readString(),
+    source.readSerializable() as LinkedList<ChatMessage>
+    )
+
+
+    override fun describeContents() = 0
+
+    override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
+        writeString(groupId)
+        writeString(industry)
+        writeString(category)
+        writeString(groupName)
+        writeString(groupImage)
+        writeSerializable(recentMessages)
+    }
+
+    companion object {
+        @JvmField
+        val CREATOR: Parcelable.Creator<UserGroup> = object : Parcelable.Creator<UserGroup> {
+            override fun createFromParcel(source: Parcel): UserGroup = UserGroup(source)
+            override fun newArray(size: Int): Array<UserGroup?> = arrayOfNulls(size)
+        }
     }
 }
 

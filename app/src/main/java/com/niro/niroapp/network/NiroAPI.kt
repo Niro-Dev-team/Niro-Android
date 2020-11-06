@@ -33,4 +33,6 @@ object NiroAPI {
 
     const val CREATE_SELL_ORDER = "/api/sellers/createSellOrder"
     const val GET_ALL_SELL_ORDERS = "/api/sellers/getBuyOrders"
+
+    const val GET_ALL_GROUPS_FOR_INDUSTRY = "GET_ALL_GROUPS_FOR_INDUSTRY/{industry}"
 }

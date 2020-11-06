@@ -1,7 +1,6 @@
-package com.niro.niroapp.pubnub_chat.chatNav;
+package com.niro.niroapp.chats.fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,11 +15,10 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.niro.niroapp.R;
 import com.niro.niroapp.models.responsemodels.User;
+import com.niro.niroapp.chats.adapters.TabAdapter;
 
 
-
-
-public class GroupChatFragment extends Fragment {
+public class ChatFragment extends Fragment {
 
     private String[] titles = new String[]{"GROUPS", "MESSAGES"};
     TabLayout tabLayout;
@@ -36,7 +34,7 @@ public class GroupChatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         rootView=inflater.inflate(
-                R.layout.activity_chat, container, false);
+                R.layout.fragment_chat, container, false);
         tabLayout = rootView.findViewById(R.id.tabs);
 
         myViewPager2 = rootView.findViewById(R.id.viewpager);

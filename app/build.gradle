@@ -11,10 +11,10 @@ android {
             storePassword '@Admin123$'
             keyAlias 'keyNiro'
             keyPassword '@Admin123$'
-            storeFile file('C:\\Users\\VAMSHI DUDDU\\Desktop\\Niro\\MyBranch\\Niro-Android\\keystore\\release\\releasekey')
+            storeFile file('/keystore/release/releasekey')
         }
         prodRelease {
-            storeFile file('/Volumes/STRONTIUM/niro_agro/keystore/prodrelease/prodkey')
+            storeFile file('/keystore/prodrelease/prodkey')
             storePassword '@Niro_admin#123$'
             keyAlias 'niroProd'
             keyPassword '@Niro_admin#123$'
@@ -152,7 +152,8 @@ dependencies {
     implementation 'com.github.nikartm:image-support:1.0.5'
 
     // add PubNub Android-Java SDK here at the bottom
-    implementation group: 'com.pubnub', name: 'pubnub-gson', version: '4.+'\
+    implementation group: 'com.pubnub', name: 'pubnub-gson', version: '4.+'
+    implementation group: 'com.pubnub', name: 'pubnub-gson', version: '4.+'
 
     implementation 'com.google.android.material:material:1.1.0-alpha08'
     implementation 'androidx.viewpager2:viewpager2:1.0.0-beta02'
@@ -165,6 +166,7 @@ dependencies {
     implementation 'com.zolad:videoslimmer:1.0.0'
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.github.jaiselrahman:FilePicker:1.3.2'
 
 }
 

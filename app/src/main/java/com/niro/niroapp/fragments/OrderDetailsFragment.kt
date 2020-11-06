@@ -49,9 +49,9 @@ class OrderDetailsFragment : AbstractBaseFragment(),FileDownloadResponseHandler 
     ): View? {
         bindingOrderDetailsFragment = DataBindingUtil.inflate(inflater,R.layout.order_details_fragment, container, false)
         bindingOrderDetailsFragment.lifecycleOwner = viewLifecycleOwner
+        requireActivity().viewModelStore.clear()
         return bindingOrderDetailsFragment.root
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 

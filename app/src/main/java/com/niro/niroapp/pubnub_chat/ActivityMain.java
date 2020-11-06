@@ -2,7 +2,6 @@ package com.niro.niroapp.pubnub_chat;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,7 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.niro.niroapp.R;
-import com.niro.niroapp.pubnub_chat.chatNav.GroupChatFragment;
+import com.niro.niroapp.chats.fragments.ChatFragment;
 import com.niro.niroapp.pubnub_chat.others.OthersDummy;
 
 
@@ -25,7 +24,7 @@ public class ActivityMain extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat_nav);
-        currentFragment = new GroupChatFragment();
+        currentFragment = new ChatFragment();
         ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.content, currentFragment);
         ft.commit();
@@ -38,7 +37,7 @@ public class ActivityMain extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.action_chat:
-                       currentFragment = new GroupChatFragment();
+                       currentFragment = new ChatFragment();
                        ft = getSupportFragmentManager().beginTransaction();
                        ft.replace(R.id.content, currentFragment);
                         ft.commit();

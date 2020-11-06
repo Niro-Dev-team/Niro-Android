@@ -40,7 +40,7 @@
         <item name="carbon_cornerRadius">@dimen/_4sdp</item>
     </style>
 
-    <style name="buttonNextStyle"  parent="carbon_Button.Colored">
+    <style name="buttonNextStyle" parent="carbon_Button.Colored">
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">@dimen/_16ssp</item>
@@ -53,7 +53,7 @@
     </style>
 
 
-    <style name="buttonAddStyle"  parent="carbon_Button.Colored">
+    <style name="buttonAddStyle" parent="carbon_Button.Colored">
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">@dimen/_14ssp</item>
@@ -65,7 +65,7 @@
 
     </style>
 
-    <style name="signupUserDetails" >
+    <style name="signupUserDetails">
         <item name="android:textSize">@dimen/_12ssp</item>
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textColor">@color/colorBlack</item>
@@ -84,9 +84,9 @@
     </style>
 
     <style name="cardItemText">
-      <item name="android:textColor">@color/colorTextCommodityName</item>
+        <item name="android:textColor">@color/colorTextCommodityName</item>
         <item name="android:textSize">@dimen/_12ssp</item>
-       <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
 
     <style name="UserTypeStyle">
@@ -141,7 +141,7 @@
         <item name="android:background">@drawable/form_edit_text</item>
         <item name="android:padding">@dimen/dp_10</item>
     </style>
-    
+
     <style name="formEditTextAppearance">
         <item name="android:textSize">@dimen/_14ssp</item>
         <item name="android:textColor">@color/textSearchBox</item>
@@ -178,8 +178,8 @@
     </style>
 
     <style name="ratingBar">
-            <item name="colorControlNormal">@color/colorbackgroundGrey</item>
-            <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/colorbackgroundGrey</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
 
     </style>
 
@@ -190,10 +190,19 @@
     </style>
 
     <style name="mandiRateValuesText">
-    <item name="android:textColor">@color/colorTextCommodityName</item>
-    <item name="android:textSize">@dimen/_9ssp</item>
-    <item name="android:fontFamily">@font/roboto_medium</item>
-</style>
+        <item name="android:textColor">@color/colorTextCommodityName</item>
+        <item name="android:textSize">@dimen/_9ssp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

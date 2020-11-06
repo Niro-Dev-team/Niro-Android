@@ -25,7 +25,7 @@ public class GroupListAdapter extends RecyclerView.Adapter<GroupListAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View listItem= layoutInflater.inflate(R.layout.grouplisting, parent, false);
+        View listItem= layoutInflater.inflate(R.layout.card_group_list_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(listItem);
         return viewHolder;
     }
@@ -58,8 +58,8 @@ public class GroupListAdapter extends RecyclerView.Adapter<GroupListAdapter.View
         public ViewHolder(View itemView) {
             super(itemView);
             this.imageView = (ImageView) itemView.findViewById(R.id.imageView);
-            this.textView = (TextView) itemView.findViewById(R.id.textView);
-            relativeLayout = (RelativeLayout)itemView.findViewById(R.id.relativeLayout);
+//            this.textView = (TextView) itemView.findViewById(R.id.textView);
+//            relativeLayout = (RelativeLayout)itemView.findViewById(R.id.relativeLayout);
         }
     }
 }

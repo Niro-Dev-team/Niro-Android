@@ -16,9 +16,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.niro.niroapp.R
+import com.niro.niroapp.activities.MainActivity
 import com.niro.niroapp.database.SharedPreferenceManager
 import com.niro.niroapp.models.responsemodels.User
 import com.niro.niroapp.models.responsemodels.UserType
+import com.pubnub.api.PubNub
 import java.io.File
 import java.io.IOException
 import java.lang.Exception
@@ -201,6 +203,10 @@ object NiroAppUtils {
     fun showToast(message:String,context: Context,duration: Int) {
         Toast.makeText(context,message,duration).show()
     }
+
+
+    fun getPubNubObject(activity: FragmentActivity) : PubNub? = if(activity is MainActivity) (activity).getPubnub() else null
+
 
 
 

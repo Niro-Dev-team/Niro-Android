@@ -20,6 +20,7 @@ import com.niro.niroapp.models.responsemodels.MandiRatesRecord;
 import com.niro.niroapp.models.responsemodels.OrderSummary;
 import com.niro.niroapp.models.responsemodels.User;
 import com.niro.niroapp.models.responsemodels.UserContact;
+import com.niro.niroapp.models.responsemodels.UserGroup;
 import com.niro.niroapp.models.responsemodels.UserOrder;
 import com.niro.niroapp.models.responsemodels.UserPayment;
 import com.niro.niroapp.users.models.AddContactPostData;
@@ -104,12 +105,8 @@ public interface ApiInterface {
     @POST(NiroAPI.GET_ALL_SELL_ORDERS)
     Call<GenericAPIResponse<List<BuyCommodity>>> getSellerCommodities(@Body GetSellerCommoditiesPostData getSellerOrdersPostData);
 
-
-
-
-
-    
-
+    @GET(NiroAPI.GET_ALL_GROUPS_FOR_INDUSTRY)
+    Call<GenericAPIResponse<List<UserGroup>>> getAllGroupsForIndustry(@Path("industry") String industry);
 
 }
 
