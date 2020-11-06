@@ -507,7 +507,7 @@ public class GroupChatActivity extends AppCompatActivity
                 msgContent= msgInputText.getText().toString();
                 if(!TextUtils.isEmpty(msgContent))
                 {
-                    // Add a new sent message to the list.
+                    // Add radio_selected new sent message to the list.
                     submitMessage(senderName,msgInputText.getText().toString(),"text");
                     runOnUiThread(new Runnable() {
 
@@ -616,7 +616,7 @@ public class GroupChatActivity extends AppCompatActivity
                         double size =  getFileSizeFromUriInMegaByte(getApplicationContext(),content_describer);
                       Log.d("size", String.valueOf(size));
 //                        File mydir = getApplicationContext().getDir("Niro", Context.MODE_PRIVATE); //Creating an internal dir;
-//                        File fileWithinMyDir = new File(mydir, "compressed"+vName); //Getting a file within the dir.
+//                        File fileWithinMyDir = new File(mydir, "compressed"+vName); //Getting radio_selected file within the dir.
 //                        try {
 //                            FileOutputStream out = new FileOutputStream(fileWithinMyDir); //Use the stream as usual to write into the file
 //                        } catch (FileNotFoundException e) {

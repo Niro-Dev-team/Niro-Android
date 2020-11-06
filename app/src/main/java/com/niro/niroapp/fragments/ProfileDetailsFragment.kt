@@ -1,6 +1,7 @@
 package com.niro.niroapp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.niro.niroapp.R
 import com.niro.niroapp.activities.MainActivity
@@ -17,9 +19,11 @@ import com.niro.niroapp.models.responsemodels.User
 import com.niro.niroapp.utils.NiroAppConstants
 import com.niro.niroapp.viewmodels.ProfileDetailsViewModel
 import com.niro.niroapp.viewmodels.factories.ProfileDetailsViewModelFactory
+import javax.inject.Inject
 
-class ProfileDetailsFragment : AbstractBaseFragment() {
+ class ProfileDetailsFragment : AbstractBaseFragment() {
 
+    @Inject
     private  var viewModel: ProfileDetailsViewModel? = null
     private lateinit var bindingProfileDetails : ProfileDetailsFragmentBinding
     private var mCurrentUser : User? = null
@@ -35,6 +39,9 @@ class ProfileDetailsFragment : AbstractBaseFragment() {
         arguments?.let {
             mCurrentUser = it.getParcelable(NiroAppConstants.ARG_CURRENT_USER) as? User
         }
+
+
+        Log.e("Bundle", mCurrentUser.toString())
     }
 
 
@@ -51,6 +58,8 @@ class ProfileDetailsFragment : AbstractBaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
         viewModel = activity?.let {
             ProfileDetailsViewModelFactory(mCurrentUser).getViewModel(mCurrentUser, it)
         }
@@ -76,6 +85,11 @@ class ProfileDetailsFragment : AbstractBaseFragment() {
         super.registerBackPressedCallback(previousScreenId = R.id.navigation_home)
         bindingProfileDetails.btnEditCommodities.setOnClickListener { openEditCommoditiesScreen() }
         bindingProfileDetails.btnEditProfile.setOnClickListener { openEditProfileScreen() }
+        bindingProfileDetails.changeLanguage.setOnClickListener { openChangeLanguageScreen() }
+    }
+
+    private fun openChangeLanguageScreen() {
+        findNavController().navigate(R.id.action_navigation_profile_details_to_navigation_Language_edit,bundleOf(NiroAppConstants.ARG_CURRENT_USER to mCurrentUser))
     }
 
     private fun openEditProfileScreen() {

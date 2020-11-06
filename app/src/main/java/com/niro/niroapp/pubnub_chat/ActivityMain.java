@@ -43,7 +43,7 @@ public class ActivityMain extends AppCompatActivity {
                         ft.commit();
 
                         return true;
-                    case R.id.action_other:
+                    case R.id.action_profile:
                         currentFragment = new OthersDummy();
                         ft = getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.content, currentFragment);

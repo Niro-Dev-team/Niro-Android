@@ -222,6 +222,7 @@
     <string name="english">English</string>
 
     <string name="hindi">Hindi</string>
+
     <string name="fetching_groups">Fetching all the groups...</string>
     <string name="title_activity_test">TestActivity</string>
     <!-- Strings used for fragments for navigation -->
@@ -233,5 +234,10 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
+    <string name="change_language" >Change Language</string>
+    <string name="groups">GROUPS</string>
+    <string name="messages">MESSAGES</string>
+    <string name="profile">Settings</string>
+    <string name="title_profile_">Profile</string>
 
 </resources>

@@ -3,20 +3,16 @@ package com.niro.niroapp.activities
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.preference.PreferenceManager
-import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -25,7 +21,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
-import com.google.android.material.navigation.NavigationView
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -43,6 +38,7 @@ import com.niro.niroapp.utils.NiroAppConstants
 import com.niro.niroapp.utils.NiroAppUtils
 import com.pubnub.api.PNConfiguration
 import com.pubnub.api.PubNub
+import com.niro.niroapp.viewmodels.LocaleHelper.onAttach
 import kotlinx.android.synthetic.main.app_bar_home.view.*
 
 class MainActivity : AppCompatActivity() {
@@ -65,9 +61,11 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.nav_drawer)
-        val navView: NavigationView = findViewById(R.id.nav_view)
+//        val drawerLayout: DrawerLayout = findViewById(R.id.nav_drawer)
+        //val navView: NavigationView = findViewById(R.id.nav_view)
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav_view)
+
+
 
         mNavController = findNavController(R.id.nav_host_fragment)
 
@@ -80,20 +78,23 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_orders,
                 R.id.action_chat,
                 R.id.navigation_loaders,
-                R.id.action_other
-            ), drawerLayout
+                R.id.action_profile,
+                R.id.profile_settings
+
+
+            )
         )
         setupActionBarWithNavController(mNavController, appBarConfiguration)
-        navView.setupWithNavController(mNavController)
+        //navView.setupWithNavController(mNavController)
 
         bottomNavigationView.setupWithNavController(mNavController)
         bottomNavigationView.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
 
-        navView.setNavigationItemSelectedListener { item ->
-            launchSelectedNavigationDrawerFragment(
-                item
-            )
-        }
+//        navView.setNavigationItemSelectedListener { item ->
+//            launchSelectedNavigationDrawerFragment(
+//                item
+//            )
+//        }
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             launchSelectedFragment(
                 item
@@ -104,6 +105,7 @@ class MainActivity : AppCompatActivity() {
         initializePubnubChat()
         initializeUserProfile()
     }
+
 
     private fun initializePubnubChat()  {
         val pnConfiguration = PNConfiguration()
@@ -127,7 +129,7 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_support -> {
                 setToolbarTitleAndImage(getString(R.string.menu_support), R.drawable.ic_phone_32)
                 mNavController.navigate(R.id.nav_support)
-                closeDrawer()
+               // closeDrawer()
             }
             R.id.nav_about -> {
                 setToolbarTitleAndImage(
@@ -135,16 +137,47 @@ class MainActivity : AppCompatActivity() {
                     R.drawable.ic_app_icon_black
                 )
                 mNavController.navigate(R.id.nav_about)
-                closeDrawer()
+               // closeDrawer()
             }
             R.id.nav_logout -> {
 
                 showLogoutDialog()
-                closeDrawer()
+              //  closeDrawer()
             }
         }
         return true
+
     }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(onAttach(base))
+    }
+//    private fun launchSelectedNavigationDrawerFragment(item: MenuItem): Boolean {
+////
+////        if (!::mNavController.isInitialized) mNavController =
+////            findNavController(R.id.nav_host_fragment)
+////        when (item.itemId) {
+////            R.id.nav_support -> {
+////                setToolbarTitleAndImage(getString(R.string.menu_support), R.drawable.ic_phone_32)
+////                mNavController.navigate(R.id.nav_support)
+////                closeDrawer()
+////            }
+////            R.id.nav_about -> {
+////                setToolbarTitleAndImage(
+////                    getString(R.string.menu_about),
+////                    R.drawable.ic_app_icon_black
+////                )
+////                mNavController.navigate(R.id.nav_about)
+////                closeDrawer()
+////            }
+////            R.id.nav_logout -> {
+////
+////                showLogoutDialog()
+////                closeDrawer()
+////            }
+////        }
+////        return true
+////    }
 
     private fun showLogoutDialog() {
         LogoutDialog().show(supportFragmentManager, NiroAppConstants.TAG_DIALOG_LOGOUT)
@@ -158,7 +191,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initializeUserProfile() {
         initializeCurrentUser()
-        setUserDataInNavHeader(mCurrentUser)
+       // setUserDataInNavHeader(mCurrentUser)
         bindingActivityMain.appBarHome.contentHome.bottomNavView.menu.findItem(R.id.navigation_loaders).title =
             if ((mCurrentUser.userType ?: "").equals(
                     UserType.COMMISSION_AGENT.name,
@@ -169,30 +202,30 @@ class MainActivity : AppCompatActivity() {
         launchHomeFragment(mCurrentUser)
     }
 
-    private fun openProfileDetails(user: User) {
-        findNavController(R.id.nav_host_fragment).navigate(
-            R.id.navigation_profile_details,
-            bundleOf(NiroAppConstants.ARG_CURRENT_USER to user)
-        )
-        closeDrawer()
-    }
+//    private fun openProfileDetails(user: User) {
+//        findNavController(R.id.nav_host_fragment).navigate(
+//            R.id.navigation_profile_details,
+//            bundleOf(NiroAppConstants.ARG_CURRENT_USER to user)
+//        )
+//        closeDrawer()
+//    }
 
 
     private fun initializeCurrentUser() {
         if (!(this::mCurrentUser.isInitialized)) mCurrentUser = NiroAppUtils.getCurrentUser(this)
     }
 
-    private fun setUserDataInNavHeader(user: User) {
-        val headerLayout = bindingActivityMain.navView.getHeaderView(0)
-        headerLayout.findViewById<TextView>(R.id.tvUserName).text =
-            user.fullName ?: NiroAppUtils.getCurrentUserType(user.userType)
-        headerLayout.findViewById<TextView>(R.id.tvUserNumber).text = user.phoneNumber ?: ""
-
-        headerLayout.findViewById<LinearLayout>(R.id.layoutMyProfile)
-            .setOnClickListener { openProfileDetails(user) }
-
-
-    }
+//    private fun setUserDataInNavHeader(user: User) {
+//        val headerLayout = bindingActivityMain.navView.getHeaderView(0)
+//        headerLayout.findViewById<TextView>(R.id.tvUserName).text =
+//            user.fullName ?: NiroAppUtils.getCurrentUserType(user.userType)
+//        headerLayout.findViewById<TextView>(R.id.tvUserNumber).text = user.phoneNumber ?: ""
+//
+//        headerLayout.findViewById<LinearLayout>(R.id.layoutMyProfile)
+//            .setOnClickListener { openProfileDetails(user) }
+//
+//
+//    }
 
 
     override fun onSupportNavigateUp(): Boolean {
@@ -238,10 +271,18 @@ class MainActivity : AppCompatActivity() {
                 )
             }
 
-            R.id.action_other -> {
+            R.id.action_profile -> {
                 setToolbarTitleAndImage(getString(R.string.title_loans), R.drawable.ic_loans_24)
                 mNavController.navigate(
-                    R.id.action_other,
+                    R.id.action_profile,
+                    bundleOf(NiroAppConstants.ARG_CURRENT_USER to mCurrentUser)
+                )
+            }
+            R.id.profile_settings -> {
+                setToolbarTitleAndImage(getString(R.string.profile), R.drawable.ic_profile_24)
+
+                mNavController.navigate(
+                    R.id.action_bottomsheet,
                     bundleOf(NiroAppConstants.ARG_CURRENT_USER to mCurrentUser)
                 )
             }
@@ -283,9 +324,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun closeDrawer() {
-        bindingActivityMain.navDrawer.closeDrawer(Gravity.LEFT)
-    }
+//    private fun closeDrawer() {
+//        bindingActivityMain.navDrawer.closeDrawer(Gravity.LEFT)
+//    }
 
 
     fun setToolbarTitleAndImage(title: String, imageIcon: Int) {
@@ -369,6 +410,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateNumberOfFailedOrCancelledUpdated(count : Int) {
         SharedPreferenceManager(this,NiroAppConstants.LOGIN_SP).storeIntegerPreference(NiroAppConstants.KEY_NO_FAILED_UPDATES,count)
     }
+
 
 
 }

@@ -6,61 +6,66 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.CommoditiesFragment">
+        tools:context=".fragments.ChangeLanguage">
 
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_14sp"
-            android:text="@string/edit_language"
-            android:textColor="@color/pure_black"
-            android:textSize="@dimen/_20ssp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView6"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="@dimen/_14sp"-->
+<!--            android:text="@string/edit_language"-->
+<!--            android:textColor="@color/pure_black"-->
+<!--            android:textSize="@dimen/_20ssp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/dp_44"
-            android:layout_marginTop="112dp"
+            android:layout_marginTop="188dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/frameLayout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.212">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/hindi"
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="@dimen/_25sdp"
-                android:textAlignment="center"
-                android:button="@drawable/background_tab_item_selected"
-                android:background="#E9E9E9"
+                android:background="@drawable/radio_selection"
+                android:button="@drawable/radio_selection"
+
                 android:fontFamily="@font/roboto"
                 android:text="@string/hindi"
-                android:textStyle="bold"
-                android:checked="true"
-                android:textSize="@dimen/_20sdp" />
+                android:textAlignment="center"
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/english"
                 android:layout_width="@dimen/_120sdp"
                 android:layout_height="match_parent"
-                android:background="#E9E9E9"
-                android:textAlignment="center"
-                android:button="@drawable/background_tab_item_selected"
                 android:layout_gravity="center_horizontal"
-                android:checked="false"
-                android:textStyle="bold"
-                android:text="@string/english"
-                android:fontFamily="@font/roboto"
+                android:background="@drawable/radio_selection"
+                android:button="@drawable/radio_selection"
 
-                android:textSize="@dimen/_20sdp"  />
+                android:fontFamily="@font/roboto"
+                android:text="@string/english"
+                android:textAlignment="center"
+                android:textSize="@dimen/_20sdp"
+
+                android:textStyle="bold" />
         </RadioGroup>
 
         <FrameLayout
@@ -74,7 +79,7 @@
 
             <carbon.widget.Button
                 style="@style/loginButton"
-                android:id="@+id/btnNext"
+                android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_35sdp"
                 android:layout_gravity="center"

@@ -16,7 +16,7 @@ import com.niro.niroapp.database.DatabaseKeys
 import com.niro.niroapp.database.SharedPreferenceManager
 import com.niro.niroapp.firebase.FirebaseTokenGenerator
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

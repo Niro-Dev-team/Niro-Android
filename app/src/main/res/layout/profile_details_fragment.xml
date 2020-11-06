@@ -35,6 +35,16 @@
     </FrameLayout>
 
 
+    <Button
+        android:id="@+id/changeLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/flCommodityDetails"
+        android:text="@string/change_language"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
     <FrameLayout
         android:id="@+id/flCommodityDetails"
         android:layout_width="match_parent"

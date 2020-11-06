@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_chat">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -84,7 +84,23 @@
             android:id="@+id/action_navigation_payments_to_navigation_contacts_list"
             app:destination="@id/navigation_contacts_list" />
     </fragment>
+    <dialog
+        android:id="@+id/action_bottomsheet"
+        android:name="com.niro.niroapp.fragments.BottomSheetFragment"
 
+        tools:layout="@layout/bottomsheet_fragment" >
+
+        <action
+            android:id="@+id/action_bottomsheet_to_navigation_contactUs"
+            app:destination="@id/nav_about" />
+        <action
+            android:id="@+id/action_bottomsheet_to_navigation_supoort"
+            app:destination="@id/nav_support" />
+
+
+
+
+    </dialog>
     <fragment
         android:id="@+id/navigation_create_payment"
         android:name="com.niro.niroapp.fragments.CreatePaymentsFragment"
@@ -171,10 +187,20 @@
     </fragment>
 
     <fragment
-        android:id="@+id/action_other"
-        android:name="com.niro.niroapp.loans.fragments.LoanRequirementFragment"
-        android:label="@string/title_loans"
-        tools:layout="@layout/loan_requirement_fragment" />
+        android:id="@+id/action_profile"
+        android:name="com.niro.niroapp.fragments.ProfileDetailsFragment"
+        android:label="@string/title_profile_"
+        tools:layout="@layout/profile_details_fragment" >
+        <action
+            android:id="@+id/action_navigation_profile_details_to_navigation_profile_edit"
+            app:destination="@id/navigation_profile_edit" />
+        <action
+            android:id="@+id/action_navigation_profile_details_to_navigation_commodities_fragment"
+            app:destination="@id/navigation_commodities_fragment" />
+        <action
+            android:id="@+id/action_navigation_profile_details_to_navigation_Language_edit"
+            app:destination="@id/navigation_change_language" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_about"
@@ -199,6 +225,16 @@
         <action
             android:id="@+id/action_navigation_profile_details_to_navigation_commodities_fragment"
             app:destination="@id/navigation_commodities_fragment" />
+        <action
+            android:id="@+id/action_navigation_profile_details_to_navigation_Language_edit"
+            app:destination="@id/navigation_change_language" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_change_language"
+        android:name="com.niro.niroapp.fragments.ChangeLanguage"
+        android:label="@string/menu_my_profile"
+        tools:layout="@layout/layout_select_language" >
+
     </fragment>
 
     <fragment
