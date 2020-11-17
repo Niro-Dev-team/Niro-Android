@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.bottomsheet_fragment.view.*
 import androidx.fragment.app.FragmentManager as FragmentManager1
 
 class BottomSheetFragment() : BottomSheetDialogFragment() {
+
     override fun getTheme(): Int = R.style.BottomSheetDialogTheme
     private lateinit var bindingBottomSheetFragment: BottomsheetFragmentBinding
     private var mCurrentUser : User? = null

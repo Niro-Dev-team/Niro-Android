@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="quantity_types">
+        <item>Quintal</item>
+        <item>Kg</item>
+
+        <item>Ton</item>
+        <item>Litres</item>
+        <item>metres</item>
+    </string-array>
+</resources>

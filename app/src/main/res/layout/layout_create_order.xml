@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/navigationMenuCoordinator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+
+        <RelativeLayout
+            android:id="@+id/profile_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:paddingTop="@dimen/_5sdp"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="0dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_12sdp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardCornerRadius="@dimen/dp_10"
+                app:cardElevation="@dimen/dp_6">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/_8sdp">
+
+                    <TextView
+                        android:id="@+id/tvLblItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_23sdp"
+                        android:text="@string/item_name"
+                        android:textAppearance="@style/txt_lbl_order_appearance"
+                        app:layout_constraintStart_toStartOf="@+id/tvLblType"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <carbon.widget.EditText
+                        android:id="@+id/etItemName"
+                        style="@style/carbon_EditText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_18sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
+
+
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/_12sdp"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingEnd="@dimen/_12sdp"
+                        android:paddingBottom="@dimen/_8sdp"
+                        android:textColor="@color/colorBlack"
+                        android:textColorHighlight="@color/colorBlack"
+                        android:textSize="@dimen/_14ssp"
+                        app:carbon_backgroundTint="@color/colorTransparent"
+                        app:carbon_cornerRadius="@dimen/_6dp"
+                        app:carbon_stroke="@color/color_stroke_grey"
+                        app:carbon_strokeWidth="@dimen/_2dp"
+                        app:layout_constraintEnd_toEndOf="@+id/quantity_type_layout"
+                        app:layout_constraintStart_toEndOf="@+id/tvLblItem"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Wheat" />
+
+                    <TextView
+                        android:id="@+id/tvLblType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:text="@string/lbl_quantity_type"
+                        android:textAppearance="@style/txt_lbl_order_appearance"
+                        app:layout_constraintStart_toStartOf="@+id/tvLblQuantity"
+                        app:layout_constraintTop_toBottomOf="@+id/tvLblItem" />
+
+                    <RelativeLayout
+                        android:id="@+id/quantity_type_layout"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:background="@drawable/background_spinner"
+                        app:layout_constraintEnd_toEndOf="@+id/layout_add_quantity"
+                        app:layout_constraintTop_toBottomOf="@+id/etItemName">
+
+                        <Spinner
+                            android:id="@+id/spQuantityType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:entries="@array/quantity_types"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="center"
+                            android:padding="@dimen/_6dp"
+                            android:spinnerMode="dropdown"
+                            android:textColor="@color/colorBlack"
+                            android:textColorHighlight="@color/colorBlack"
+                            android:textSize="@dimen/_14ssp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tvLblQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_9sdp"
+                        android:layout_marginTop="@dimen/_28sdp"
+                        android:text="@string/lbl_quantity"
+                        android:textAppearance="@style/txt_lbl_order_appearance"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvLblType" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_add_quantity"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_9sdp"
+                        android:background="@drawable/background_add_quantity"
+                        android:orientation="horizontal"
+
+                        android:paddingStart="4dp"
+                        android:paddingTop="@dimen/_2dp"
+                        android:paddingEnd="@dimen/_4dp"
+                        android:paddingBottom="@dimen/_2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/quantity_type_layout">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnRemoveQuantity"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/colorTransparent"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/tvProductQuantity"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:alpha="0.9"
+                            android:background="@color/colorPrimary"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/_10ssp"
+                            tools:text="1" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnAddQuantity"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/colorTransparent"
+                            android:gravity="center"
+                            android:text="+"
+                            android:textColor="@color/colorBlack" />
+                    </LinearLayout>
+
+                    <carbon.widget.Button
+                        android:id="@+id/btnAdd"
+                        style="@style/buttonNextStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_9sdp"
+                        android:layout_marginTop="@dimen/_24sdp"
+                        android:layout_marginEnd="@dimen/_9sdp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/txt_add"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_add_quantity" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

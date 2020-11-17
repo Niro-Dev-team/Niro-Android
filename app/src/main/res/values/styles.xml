@@ -146,6 +146,7 @@
 
     </style>
 
+
     <style name="editTextForm">
 
         <item name="android:layout_marginStart">@dimen/_17sdp</item>
@@ -199,6 +200,18 @@
         <item name="android:textSize">@dimen/_14ssp</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="txt_lbl_order_appearance">
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/colorTextCommodityName</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+    </style>
+
+    <style name="txt_appearance_regular_small">
+        <item name="android:textSize">@dimen/_10ssp</item>
+        <item name="android:textColor">@color/colorTextCommodityName</item>
+        <item name="fontFamily">@font/roboto</item>
     </style>
 
     <style name="mandiRateValuesText">

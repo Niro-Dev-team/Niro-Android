@@ -239,5 +239,9 @@
     <string name="messages">MESSAGES</string>
     <string name="profile">Settings</string>
     <string name="title_profile_">Profile</string>
+    <string name="txt_add">Add</string>
+    <string name="item_name">Item Name</string>
+    <string name="lbl_quantity_type">Quantity Type</string>
+    <string name="lbl_quantity">Quantity</string>
 
 </resources>
