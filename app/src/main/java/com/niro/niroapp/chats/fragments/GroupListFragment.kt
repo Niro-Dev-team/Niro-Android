@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import carbon.dialog.ProgressDialog
 import com.google.gson.Gson
 import com.niro.niroapp.R
-import com.niro.niroapp.chats.models.ChatMessage
 import com.niro.niroapp.chats.viewmodels.GroupListViewModel
 import com.niro.niroapp.chats.viewmodels.factories.GroupListViewModelFactory
 import com.niro.niroapp.databinding.ListOfGroupsBinding
@@ -21,6 +20,10 @@ import com.niro.niroapp.models.APIError
 import com.niro.niroapp.models.APILoader
 import com.niro.niroapp.models.APIResponse
 import com.niro.niroapp.models.Success
+import com.niro.niroapp.models.responsemodels.ChatMessage      
+
+
+b
 import com.niro.niroapp.models.responsemodels.UserGroup
 import com.niro.niroapp.utils.ItemClickListener
 import com.niro.niroapp.utils.NiroAppUtils
@@ -121,7 +124,8 @@ class GroupListFragment : Fragment(),ItemClickListener {
                         val index = groups?.toMutableList()?.indexOfFirst { userGroup -> userGroup.groupName == groupName }
                         val group = groups?.toMutableList()?.get(index ?: 0)
                         val messageItems = channels[groupName]
-                       group?.recentMessages?.addAll((messageItems?.map { pnFetchMessageItem -> Gson().fromJson(pnFetchMessageItem.message,ChatMessage::class.java) } ?: LinkedList()))
+                       group?.recentMessages?.addAll((messageItems?.map { pnFetchMessageItem -> Gson().fromJson(pnFetchMessageItem.message,
+                           ChatMessage::class.java) } ?: LinkedList()))
                     }
                     if(mProgressDialog != null && mProgressDialog?.isShowing == true)  mProgressDialog?.dismiss()
                     updateList(groups)

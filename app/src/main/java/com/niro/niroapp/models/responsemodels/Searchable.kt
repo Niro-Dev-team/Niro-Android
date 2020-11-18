@@ -1,9 +1,10 @@
 package com.niro.niroapp.models.responsemodels
 
+import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
-import com.niro.niroapp.chats.models.ChatMessage
 import com.niro.niroapp.users.fragments.ContactType
+import com.niro.niroapp.viewmodels.QuantityType
 import java.util.*
 
 sealed class Searchable {}
@@ -464,6 +465,98 @@ data class UserGroup(
             override fun createFromParcel(source: Parcel): UserGroup = UserGroup(source)
             override fun newArray(size: Int): Array<UserGroup?> = arrayOfNulls(size)
         }
+    }
+}
+
+
+data class ChatMessage(
+    val userId: String? = null,
+    val sender: UserContact? = null,
+    val message: String? = "",
+    val fileDetails: FileDetails? = null
+) : Searchable(), Parcelable {
+    constructor(source: Parcel) : this(
+        source.readString(),
+        source.readParcelable<UserContact>(UserContact::class.java.classLoader),
+        source.readString(),
+        source.readParcelable<FileDetails>(FileDetails::class.java.classLoader)
+    )
+
+    override fun describeContents() = 0
+
+    override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
+        writeString(userId)
+        writeParcelable(sender, 0)
+        writeString(message)
+        writeParcelable(fileDetails, 0)
+    }
+
+    companion object {
+        @JvmField
+        val CREATOR: Parcelable.Creator<ChatMessage> = object : Parcelable.Creator<ChatMessage> {
+            override fun createFromParcel(source: Parcel): ChatMessage = ChatMessage(source)
+            override fun newArray(size: Int): Array<ChatMessage?> = arrayOfNulls(size)
+        }
+    }
+}
+
+
+data class FileDetails(
+    val fileUri: Uri? = null,
+    val fileName: String? = null
+) : Parcelable {
+    constructor(source: Parcel) : this(
+        source.readParcelable<Uri>(Uri::class.java.classLoader),
+        source.readString()
+    )
+
+    override fun describeContents() = 0
+
+    override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
+        writeParcelable(fileUri, 0)
+        writeString(fileName)
+    }
+
+    companion object {
+        @JvmField
+        val CREATOR: Parcelable.Creator<FileDetails> = object : Parcelable.Creator<FileDetails> {
+            override fun createFromParcel(source: Parcel): FileDetails = FileDetails(source)
+            override fun newArray(size: Int): Array<FileDetails?> = arrayOfNulls(size)
+        }
+    }
+}
+
+
+data class ChatOrderItem(
+    val orderId: String? = null,
+    val itemName: String? = null,
+    val quantityType: String? = QuantityType.KG.type,
+    val quantity: Int = 0
+
+) : Searchable(), Parcelable{
+    constructor(source: Parcel) : this(
+        source.readString(),
+        source.readString(),
+        source.readString(),
+        source.readInt()
+    )
+
+    override fun describeContents() = 0
+
+    override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
+        writeString(orderId)
+        writeString(itemName)
+        writeString(quantityType)
+        writeInt(quantity)
+    }
+
+    companion object {
+        @JvmField
+        val CREATOR: Parcelable.Creator<ChatOrderItem> =
+            object : Parcelable.Creator<ChatOrderItem> {
+                override fun createFromParcel(source: Parcel): ChatOrderItem = ChatOrderItem(source)
+                override fun newArray(size: Int): Array<ChatOrderItem?> = arrayOfNulls(size)
+            }
     }
 }
 

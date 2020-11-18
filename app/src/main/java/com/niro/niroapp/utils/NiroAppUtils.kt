@@ -1,5 +1,6 @@
 package com.niro.niroapp.utils
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -207,6 +208,9 @@ object NiroAppUtils {
     fun getPubNubObject(activity: FragmentActivity) : PubNub? = if(activity is MainActivity) (activity).getPubnub() else null
 
 
+    fun clearViewModel(activity : FragmentActivity) {
+        activity.viewModelStore.clear()
+    }
 
 
 }

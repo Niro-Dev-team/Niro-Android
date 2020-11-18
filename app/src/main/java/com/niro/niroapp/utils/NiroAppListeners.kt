@@ -1,6 +1,7 @@
 package com.niro.niroapp.utils
 
 import android.content.Context
+import com.niro.niroapp.models.responsemodels.ChatOrderItem
 import com.niro.niroapp.models.responsemodels.Searchable
 
 
@@ -32,4 +33,9 @@ interface DateChangeListener {
 
 interface CallUserListener {
     fun callUser(number : String)
+}
+
+interface RemoveOrderItemFromListListener {
+
+    fun removeOrderItem(item : ChatOrderItem)
 }

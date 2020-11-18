@@ -8,7 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-
+import androidx.recyclerview.widget.RecyclerView
+import com.niro.niroapp.adapters.GenericRecyclerAdapter
 
 
 object FragmentUtils {
@@ -102,4 +103,12 @@ object FragmentUtils {
 //    fun setTitle(activity : FragmentActivity?,title : Int) {
 //        (activity as? HomeActivity)?.setTitle(title)
 //    }
+
+
+    fun initializeRecyclerView(recyclerView : RecyclerView,layoutManager : RecyclerView.LayoutManager,adapter : GenericRecyclerAdapter<*>,variables : HashMap<Int,Any?>?) {
+            recyclerView.layoutManager = layoutManager
+        if (variables != null) adapter.setVariablesMap(variables)
+            recyclerView.setHasFixedSize(true)
+            recyclerView.adapter = adapter
+    }
 }
